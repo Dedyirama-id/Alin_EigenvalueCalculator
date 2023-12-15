@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eigenvalues Calculator</title>
+
+    <!-- Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Script -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjs/12.1.0/math.js"
+        integrity="sha512-bJoAPYQ2bOZCtRLkShanIf6IMJAs+8oAmdq5Qjra47q/2ggFXhQeDycgJciFdatpPmS833KvRE7wU/gLqdxz8Q=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Eigenvalues Calculator - By Kelompok 9</h1>
+    </header>
+    <main>
+        <article id="main-article">
+            <h2>Input Matrix Values </h2>
+            <form id="matrix-size">
+                <h3>Matrix ordo: </h3>
+                <input type="number" id="ms-row" value="4" min="1" max="20">
+                <p>X</p>
+                <input type="number" id="ms-col" value="4" min="1" max="20" disabled>
+            </form>
+            <form id="matrix-form">
+                <section id="matrix-input">
+
+                </section>
+                <button type="button" id="calculate-result">Calculate Results</button>
+            </form>
+        </article>
+        <article id="result-article">
+            <h2>Result </h2>
+            <section>
+                <h3>Trace: <span id="trace-value">-</span></h3>
+            </section>
+            <section>
+                <h3>Characteristic Polynomial: </h3>
+                <p id="char-poly">-</p>
+            </section>
+            <section>
+                <h3>Eigenvalues: </h3>
+                <ul id="eigen-values">
+                    <li>-</li>
+                </ul>
+            </section>
+        </article>
+    </main>
+    <script src="script.js"></script>
+</body>
+
+</html>
