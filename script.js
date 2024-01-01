@@ -212,6 +212,7 @@ function makeCharPoly(matrixEquation, char) {
 const matrixInput = document.getElementById("matrix-input");
 const msRow = document.getElementById("ms-row");
 const msCol = document.getElementById("ms-col");
+const accuration = 5;
 
 // Fungsi untuk menghitung seluruh hasil yang diperlukan
 function calculateResult() {
@@ -223,14 +224,14 @@ function calculateResult() {
 
     let eigenValuesText = '';
     for (let index = 0; index < eigenValues.length; index++) {
-        if (typeof (eigenValues[index]) === Object) {
-            eigenValuesText += `<li>λ<sub>${index + 1}</sub> : <span>${eigenValues[index].re}</span> ${(eigenValues[index].im >= 0) ? '+' : '-'} <span>${eigenValues[index].im}</span></li>`;
+        if (typeof (eigenValues[index]) === 'object') {
+            const imValue = parseFloat(eigenValues[index].im.toFixed(accuration));
+            const reValue = parseFloat(eigenValues[index].re.toFixed(accuration));
+            eigenValuesText += (imValue === 0)
+                ? `<li>λ<sub>${index + 1}</sub> : <span>${reValue}</span></li>`
+                : `<li>λ<sub>${index + 1}</sub> : <span>${reValue}</span> ${(imValue >= 0) ? '+' : '-'} <span>${Math.abs(imValue)}i</span></li>`
         } else {
-            if (isExponen(eigenValues[index])) {
-                eigenValuesText += `<li>λ<sub>${index + 1}</sub> : ${eigenValues[index].toFixed(20)}</li>`;
-            } else {
-                eigenValuesText += `<li>λ<sub>${index + 1}</sub> : ${eigenValues[index]}</li>`;
-            }
+            eigenValuesText += `<li>λ<sub>${index + 1}</sub> : ${parseFloat(eigenValues[index].toFixed(accuration))}</li>`;
         }
     }
     eigenValuesContainer.innerHTML = eigenValuesText;
